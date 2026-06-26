@@ -2,8 +2,9 @@ name:"Hello World"
 on:
   push:
     branches:
-      -production
-      -master
+      - production
+      - master
+      - main
 jobs:
   hello-world:
     runs-on: ubuntu-latest
