@@ -1,0 +1,14 @@
+name:"Hello World"
+on:
+  push:
+    branches:
+      -production
+      -master
+jobs:
+  hello-world:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Hello World
+        run: echo "Hello World"
+      - name: "Print current date and time"
+        run: date
