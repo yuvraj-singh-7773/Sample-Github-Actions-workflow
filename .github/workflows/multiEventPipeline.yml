@@ -5,6 +5,7 @@ on:
       - production
       - master
       - main
+      - test
   pull_request:
     branches:
       - master
@@ -13,17 +14,26 @@ on:
   workflow_dispatch:
 jobs:
   on-push:
+    if: github.event_name == 'push'
     runs-on: ubuntu-latest
     steps:
       - name: "Running on master/test push"
         run: echo "Running on master/test push"
   on-pull-request:
+    if: github.event_name == 'pull_request'
     runs-on: ubuntu-latest
     steps:
       - name: "Running on master/test pull request"
         run: echo "Running on master/test pull request"
+  on-pull-request-closed:
+        if: github.event_name == 'pull_request' && github.event.action == 'closed'
+        runs-on: ubuntu-latest
+        steps:
+            - name: "Running on pull request closed"
+              run: echo "Running on pull request closed"
   on-workflow-dispatch:
+    if: github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-latest
-      steps:
-        - name: "Running on workflow dispatch"
-          run: echo "Running on workflow dispatch"
+    steps:
+      - name: "Running on workflow dispatch"
+        run: echo "Running on workflow dispatch"
