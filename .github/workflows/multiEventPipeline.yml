@@ -1,0 +1,21 @@
+name : "Multi Event Pipeline / Workflow"
+on:
+  push:
+    branches:
+      - production
+      - master
+      - main
+  pull_request:
+    branches:
+      - master
+jobs:
+  on-push:
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Running on master/test push"
+        run: echo "Running on master/test push"
+  on-pull-request:
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Running on master/test pull request"
+        run: echo "Running on master/test pull request"
